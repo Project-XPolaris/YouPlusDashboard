@@ -138,20 +138,10 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
 };
 
 export const request: RequestConfig = {
-  timeout: 1000,
+  timeout: 10000,
   errorConfig: {},
   middlewares: [],
   requestInterceptors: [
-    (url, options) => {
-      const globalWindow = window as any;
-      let newUrl = url;
-      const apiUrl = globalWindow.baseApiUrl;
-      if (apiUrl) {
-        newUrl = newUrl.replace(/^\/api/, apiUrl);
-        console.log(newUrl)
-      }
-      return {url:newUrl, options};
-    },
     (url, options) => {
       const accessToken  = localStorage.getItem('token');
       if (accessToken) {

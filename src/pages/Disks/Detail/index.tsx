@@ -1,5 +1,5 @@
 import {PageContainer} from "@ant-design/pro-layout";
-import {Button, Card} from "antd";
+import {Button, Card, Col, Row} from "antd";
 import type {IRouteComponentProps} from "@umijs/renderer-react";
 import useDiskDetailModel from "@/pages/Disks/Detail/model";
 import {useEffect, useState} from "react";
@@ -51,16 +51,21 @@ const DiskDetailPage = ({match}: DiskDetailPageProps) => {
           setAddPartitionDialogVisible(false)
         }}
       />
-      <Card title={"Partition"}>
-        <ProTable
-          search={false}
-          columns={partColumns}
-          dataSource={model.disk?.parts}
-          toolBarRender={() => [
-            <Button key="add" onClick={() => setAddPartitionDialogVisible(true)}>添加分区</Button>,
-          ]}
-        />
-      </Card>
+      <Row gutter={[0,16]}>
+        <Col span={24}>
+          <Card title={"Partition"}>
+            <ProTable
+              search={false}
+              columns={partColumns}
+              dataSource={model.disk?.parts}
+              toolBarRender={() => [
+                <Button key="add" onClick={() => setAddPartitionDialogVisible(true)}>添加分区</Button>,
+              ]}
+            />
+          </Card>
+        </Col>
+      </Row>
+
     </PageContainer>
   )
 }
