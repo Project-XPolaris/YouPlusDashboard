@@ -1,11 +1,11 @@
-import {PageContainer} from "@ant-design/pro-layout";
 import CreateShareFolderDialog from "@/components/CreateShareFolderDialog";
 import {useEffect, useState} from "react";
 import useShareFolderListModel from "@/pages/ShareFolder/List/model";
 import {Button, Card, Switch, Table} from "antd";
 import type {ColumnsType} from "antd/es/table";
 import filesize from "filesize";
-import {Link} from "umi";
+import {Link} from "@umijs/max";
+import {PageContainer} from "@ant-design/pro-components";
 
 type ShareFolderItem = {
   id: string;

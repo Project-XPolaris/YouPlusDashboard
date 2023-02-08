@@ -1,4 +1,4 @@
-import ProCard from "@ant-design/pro-card";
+import {ProCard} from "@ant-design/pro-components";
 import {Alert} from "antd";
 import Title from "antd/lib/typography/Title";
 
@@ -8,7 +8,7 @@ const InstallAppTaskCard = ({task}: {task: API.Task}) => {
     <ProCard title={`Install app ${extra.appName}`} bordered >
       <Title level={4}>{task.status}</Title>
       {
-        task.status == "Error" &&
+        task.status === "Error" &&
         <Alert type={'error'} message={task.errorMessage} />
       }
     </ProCard>

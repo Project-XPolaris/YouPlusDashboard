@@ -1,7 +1,5 @@
-import ProCard from "@ant-design/pro-card";
-import type {ProColumns} from "@ant-design/pro-table";
-import ProTable from "@ant-design/pro-table";
 import {Tabs} from "antd";
+import {ProCard, ProColumns, ProTable} from "@ant-design/pro-components";
 
 type AccessItems = {
     id: string;

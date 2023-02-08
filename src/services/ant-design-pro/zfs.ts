@@ -1,4 +1,4 @@
-import {request} from "@@/plugin-request/request";
+import {request} from "@umijs/max";
 
 export async function createSimpleZFSPool (name: string,disks: string[]){
   return request<API.BaseResponse>('/api/zpool', {

@@ -1,19 +1,18 @@
-import {PageContainer} from "@ant-design/pro-layout";
-import type {IRouteComponentProps} from "@umijs/renderer-react";
 import useGroupDetail from "@/pages/Account/GroupDetail/model";
 import {useEffect, useState} from "react";
 import {Button, Card, Space} from "antd";
 import SelectAccountDialog from "@/components/SelectAccountDialog";
-import ProTable, {ProColumns} from "@ant-design/pro-table";
+import {PageContainer, ProColumns, ProTable} from "@ant-design/pro-components";
+import {useParams} from "@@/exports";
 
-type GroupDetailProps = IRouteComponentProps<{ name?: string }> & {}
-const GroupDetail = ({match}: GroupDetailProps) => {
+const GroupDetail = () => {
+  const params  = useParams();
   const model = useGroupDetail()
   const [selectAccountDialogVisible, setSelectAccountDialogVisible] = useState(false)
   const [selectedAccount, setSelectedAccount] = useState<API.GroupUser[]>([])
   useEffect(() => {
-    if (match.params.name) {
-      model.refresh(match.params.name)
+    if (params.name) {
+      model.refresh(params.name)
     }
   }, [])
   if (!model.group) {

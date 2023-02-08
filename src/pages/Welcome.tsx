@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {PageContainer} from '@ant-design/pro-layout';
+import {PageContainer} from '@ant-design/pro-components';
 import DeviceBaseStatisticsCard from "@/components/DeviceBaseStatisticsCard";
 import {fetchDeviceInfo, fetchSystemMonitor} from "@/services/ant-design-pro/info";
 import SimpleCpuCard from "@/components/SimpleCpuCard";

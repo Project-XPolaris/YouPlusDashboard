@@ -1,4 +1,4 @@
-import {ModalForm, ProFormSelect, ProFormText,} from '@ant-design/pro-form';
+import {ModalForm, ProFormSelect, ProFormText,} from '@ant-design/pro-components';
 import useDiskList from "@/hooks/disk";
 import {useEffect} from "react";
 import styles from './index.less';

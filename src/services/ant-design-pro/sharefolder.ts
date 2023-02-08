@@ -1,4 +1,4 @@
-import {request} from "@@/plugin-request/request";
+import {request} from "@umijs/max";
 
 export async function createShareFolder({name, storageId}: { name: string, storageId: string }) {
   return request<API.BaseResponse>('/api/share', {

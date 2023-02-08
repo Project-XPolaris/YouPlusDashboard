@@ -1,9 +1,8 @@
-import {PageContainer} from "@ant-design/pro-layout";
 import useNetworkListModel from "@/pages/Network/List/model";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import {Card, Col, Row} from "antd";
-import ProDescriptions from "@ant-design/pro-descriptions";
 import {networkCapacityToHuman} from "@/utils/number";
+import {PageContainer, ProDescriptions} from "@ant-design/pro-components";
 
 const NetworkListPage = () => {
   const model = useNetworkListModel()

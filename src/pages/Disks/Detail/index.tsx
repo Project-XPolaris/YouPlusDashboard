@@ -1,21 +1,19 @@
-import {PageContainer} from "@ant-design/pro-layout";
 import {Button, Card, Col, Row} from "antd";
-import type {IRouteComponentProps} from "@umijs/renderer-react";
 import useDiskDetailModel from "@/pages/Disks/Detail/model";
 import {useEffect, useState} from "react";
-import type {ProColumns} from "@ant-design/pro-table";
-import ProTable from "@ant-design/pro-table";
 import filesize from "filesize";
 import AddPartitionDialog from "@/components/AddPartitionDialog";
-type DiskDetailPageProps = IRouteComponentProps<{ name?: string },{}> & {
+import {PageContainer, ProColumns, ProTable} from "@ant-design/pro-components";
+import {useParams} from "@@/exports";
 
-};
-const DiskDetailPage = ({match}: DiskDetailPageProps) => {
+const DiskDetailPage = () => {
+  const params  = useParams();
   const model = useDiskDetailModel()
   const [addPartitionDialogVisible, setAddPartitionDialogVisible] = useState(false)
   useEffect(() => {
-    if (match.params.name) {
-      model.loadDisk(match.params.name)
+    console.log(params)
+    if (params.name) {
+      model.loadDisk(params.name)
     }
   },[])
   const partColumns: ProColumns<API.DiskPart>[]  = [

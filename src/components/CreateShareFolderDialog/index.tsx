@@ -1,4 +1,4 @@
-import {ModalForm, ProFormSelect, ProFormText,} from '@ant-design/pro-form';
+import {ModalForm, ProFormSelect, ProFormText,} from '@ant-design/pro-components';
 import styles from './index.less';
 import {Form} from "antd";
 import useStorageList from "@/hooks/storage";

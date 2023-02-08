@@ -1,9 +1,9 @@
-import {PageContainer} from "@ant-design/pro-layout";
 import {Button, Card, Table} from "antd";
 import {useEffect, useState} from "react";
 import CreateUserDialog from "@/components/CreateUserDialog";
 import useAccountListModel from "@/pages/Account/List/model";
 import type {ColumnsType} from "antd/es/table";
+import {PageContainer} from "@ant-design/pro-components";
 type UserItem = {
   username: string;
 }

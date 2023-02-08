@@ -1,4 +1,4 @@
-import {StatisticCard} from "@ant-design/pro-card";
+import {StatisticCard} from "@ant-design/pro-components";
 import {EllipsisOutlined} from "@ant-design/icons";
 import {Space} from "antd";
 import filesize from "filesize";

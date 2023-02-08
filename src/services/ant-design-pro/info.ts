@@ -1,4 +1,4 @@
-import {request} from "@@/plugin-request/request";
+import {request} from "@umijs/max";
 
 export function fetchDeviceInfo() {
   return request<API.GetDeviceInfoResult>('/api/device/info', {

@@ -1,60 +1,79 @@
 import React from "react";
-import styles from "@/components/RightContent/index.less";
-import {Menu, Modal} from "antd";
+import {MenuProps, Modal} from "antd";
 import {ControlOutlined, PoweroffOutlined, ReloadOutlined} from "@ant-design/icons";
 import HeaderDropdown from "@/components/HeaderDropdown";
 import type {GlobalHeaderRightProps} from "@/components/RightContent/AvatarDropdown";
-import type {MenuInfo} from "rc-menu/es/interface";
 import {devicePowerOff, deviceReboot} from "@/services/ant-design-pro/info";
-import {history} from "umi";
+import {history} from "@umijs/max";
+import {useEmotionCss} from "@ant-design/use-emotion-css";
 
-const { confirm } = Modal;
+const {confirm} = Modal;
 
 const DeviceMenu: React.FC<GlobalHeaderRightProps> = ({}) => {
-  const onMenuClick = (info: MenuInfo) => {
-    if (info.key === "poweroff") {
-      confirm({
-        type: "warning",
-        title: "Shutdown device?",
-        content: "Are you sure you want to shutdown device?",
-        okText: "Shutdown",
-        cancelText: "No",
-        onOk() {
-          devicePowerOff()
-          history.push("/user/login");
+  const actionClassName = useEmotionCss(({token}) => {
+    return {
+      display: 'flex',
+      float: 'right',
+      height: '48px',
+      marginLeft: 'auto',
+      overflow: 'hidden',
+      cursor: 'pointer',
+      padding: '0 12px',
+      borderRadius: token.borderRadius,
+      '&:hover': {
+        backgroundColor: token.colorBgTextHover,
+      },
+    };
+  });
+  const menu: MenuProps['items'] = [
+    {
+      key: 'poweroff',
+      label: (
+        <a onClick={() => {
+          confirm({
+            type: "warning",
+            title: "Shutdown device?",
+            content: "Are you sure you want to shutdown device?",
+            okText: "Shutdown",
+            cancelText: "No",
+            onOk() {
+              devicePowerOff()
+              history.push("/user/login");
+            }
+          })
         }
-      })
+        }>
+          Power off
+        </a>
+      ),
+      icon: <PoweroffOutlined/>,
+    },
+    {
+      key: 'reboot',
+      label: (
+        <a onClick={() => {
+          confirm({
+            type: "warning",
+            title: "Reboot device?",
+            content: "Are you sure you want to reboot device?",
+            okText: "Reboot",
+            cancelText: "No",
+            onOk() {
+              deviceReboot()
+              history.push("/user/login");
+            }
+          })
+        }}>
+          Reboot
+        </a>
+      ),
+      icon: <ReloadOutlined/>,
     }
-    if (info.key === "reboot") {
-      confirm({
-        type: "warning",
-        title: "Reboot device?",
-        content: "Are you sure you want to reboot device?",
-        okText: "Reboot",
-        cancelText: "No",
-        onOk() {
-          deviceReboot()
-          history.push("/user/login");
-        }
-      })
-    }
-  }
-  const menuHeaderDropdown = (
-    <Menu className={styles.menu} selectedKeys={[]} onClick={onMenuClick}>
-      <Menu.Item key="poweroff">
-        <PoweroffOutlined/>
-        Power off
-      </Menu.Item>
-      <Menu.Item key="reboot">
-        <ReloadOutlined/>
-        Reboot
-      </Menu.Item>
-    </Menu>
-  );
+  ]
   return (
-    <HeaderDropdown overlay={menuHeaderDropdown}>
+    <HeaderDropdown menu={{items:menu}}>
       <span
-        className={styles.action}
+        className={actionClassName}
       >
         <ControlOutlined/>
       </span>

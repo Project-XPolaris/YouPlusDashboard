@@ -1,4 +1,4 @@
-import {request} from "@@/plugin-request/request";
+import {request} from "@umijs/max";
 
 export async function readDir(target: string){
   return request<API.PathItem[]>("/api/path/readdir", {

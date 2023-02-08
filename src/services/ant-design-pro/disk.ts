@@ -1,4 +1,4 @@
-import {request} from "@@/plugin-request/request";
+import {request} from "@umijs/max";
 
 export async function fetchDiskList() {
   return request<API.DiskListResult>('/api/disks', {

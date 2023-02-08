@@ -1,11 +1,9 @@
-import {PageContainer} from "@ant-design/pro-layout";
 import useDiskListModel from "@/pages/Disks/List/model";
 import {Card} from "antd";
 import {useEffect} from "react";
 import filesize from "filesize";
-import {Link} from "umi";
-import type {ProColumns} from "@ant-design/pro-table";
-import ProTable from "@ant-design/pro-table";
+import {Link} from "@umijs/max";
+import {PageContainer, ProColumns, ProTable} from "@ant-design/pro-components";
 
 const DiskListPage = () => {
   const model= useDiskListModel()

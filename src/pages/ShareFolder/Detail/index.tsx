@@ -1,6 +1,4 @@
-import {PageContainer} from "@ant-design/pro-layout";
 import {Col, Row} from "antd";
-import type {IRouteComponentProps} from "@umijs/renderer-react";
 import {useEffect} from "react";
 import useShareFolderDetail from "@/pages/ShareFolder/Detail/model";
 import EditShareFolderForm from "@/components/EditShareFolderForm";
@@ -8,14 +6,16 @@ import StorageUseageCard from "@/components/StorageUseageCard";
 import ZfsUsageCard from "@/components/ZfsUsageCard";
 import ShareFolderUserListCard from "@/components/ShareFolderUserListCard";
 import styles from "./index.less";
-type ShareFolderDetailProps = IRouteComponentProps<{ name?: string },{}> &{
+import {PageContainer} from "@ant-design/pro-components";
+import {useParams} from "@@/exports";
 
-}
-const ShareFolderDetailPage = ({match}: ShareFolderDetailProps) => {
+const ShareFolderDetailPage = () => {
   const model = useShareFolderDetail()
+  const params  = useParams();
+
   useEffect(() => {
-    if (match.params.name) {
-      model.refresh(match.params.name)
+    if (params.name) {
+      model.refresh(params.name)
     }
   },[])
   return (

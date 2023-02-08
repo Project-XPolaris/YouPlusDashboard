@@ -1,11 +1,10 @@
-import {PageContainer} from "@ant-design/pro-layout";
 import {Card, Popconfirm} from "antd";
 import useStorageList from "@/pages/Storage/List/model";
 import filesize from "filesize";
 import {useEffect, useState} from "react";
 import styles from "./index.less";
-import ProTable, {ProColumns} from "@ant-design/pro-table";
 import UpdateStorageForm from "@/components/UpdateStorageForm";
+import {PageContainer, ProColumns, ProTable} from "@ant-design/pro-components";
 
 const StorageListPage = () => {
   const model = useStorageList()

@@ -1,4 +1,4 @@
-import {ModalForm, ProFormSelect} from "@ant-design/pro-form";
+import {ModalForm, ProFormSelect} from "@ant-design/pro-components";
 import {Form} from "antd";
 import {useEffect} from "react";
 import styles from "@/components/CreateShareFolderDialog/index.less";

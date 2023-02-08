@@ -1,13 +1,11 @@
-import {PageContainer} from "@ant-design/pro-layout";
 import {useRef, useState} from "react";
-import type {ProFormInstance} from "@ant-design/pro-form";
-import {ProFormText, StepsForm} from "@ant-design/pro-form";
-import ProCard from "@ant-design/pro-card";
+
 import {Button, message} from 'antd';
 import Dragger from "antd/es/upload/Dragger";
 import {InboxOutlined} from "@ant-design/icons";
 import useCreateAppModel from "@/pages/App/Create/model";
 import SelectFolderDialog from "@/components/SelectFolderDialog";
+import {PageContainer, ProCard, ProFormInstance, ProFormText, StepsForm} from "@ant-design/pro-components";
 
 const CreateAppPage = () => {
   const model = useCreateAppModel()

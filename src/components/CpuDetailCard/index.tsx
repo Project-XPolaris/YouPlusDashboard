@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import ProCard, { StatisticCard } from '@ant-design/pro-card';
 import RcResizeObserver from 'rc-resize-observer';
+import {ProCard, StatisticCard} from "@ant-design/pro-components";
 
 export default () => {
   const [responsive, setResponsive] = useState(false);

@@ -1,4 +1,4 @@
-import {StatisticCard} from '@ant-design/pro-card';
+import {StatisticCard} from '@ant-design/pro-components';
 import filesize from "filesize";
 
 export default ({ info }: {info?: API.MemoryUsage}) => {

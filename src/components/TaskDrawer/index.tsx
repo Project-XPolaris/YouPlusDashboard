@@ -1,14 +1,13 @@
 import {Col, Drawer, Row} from "antd";
 import useTaskModel from "@/hooks/task";
 import {useRequest} from "ahooks";
-import styles from "@/components/RightContent/index.less";
 import {UnorderedListOutlined} from "@ant-design/icons";
 import type {ReactElement} from "react";
 import {useEffect, useState} from "react";
 import InstallAppTaskCard from "@/components/InstallAppTaskCard";
+import {useEmotionCss} from "@ant-design/use-emotion-css";
 
-export type TaskDrawerProps = {};
-const TaskDrawer = ({}: TaskDrawerProps) => {
+const TaskDrawer = () => {
   const model = useTaskModel();
   const [visibleTask, setVisibleTask] = useState(false);
 
@@ -22,6 +21,21 @@ const TaskDrawer = ({}: TaskDrawerProps) => {
       ctrl.cancel()
     }
   },[visibleTask])
+  const actionClassName = useEmotionCss(({ token }) => {
+    return {
+      display: 'flex',
+      height: '48px',
+      marginLeft: 'auto',
+      overflow: 'hidden',
+      alignItems: 'center',
+      padding: '0 8px',
+      cursor: 'pointer',
+      borderRadius: token.borderRadius,
+      '&:hover': {
+        backgroundColor: token.colorBgTextHover,
+      },
+    };
+  });
   const renderCards = () => {
     const cards: ReactElement[] = [];
     model.tasks.forEach((task) => {
@@ -40,7 +54,7 @@ const TaskDrawer = ({}: TaskDrawerProps) => {
   return (
     <>
       <span
-        className={styles.action}
+        className={actionClassName}
         onClick={() => {
           setVisibleTask(true);
         }}

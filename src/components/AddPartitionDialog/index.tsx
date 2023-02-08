@@ -1,6 +1,6 @@
 import {Form} from "antd";
-import {ModalForm, ProFormText} from "@ant-design/pro-form";
 import styles from "@/components/CreateAccountGroupDialog/index.less";
+import {ModalForm, ProFormText} from "@ant-design/pro-components";
 
 export type AddPartitionDialogProps = {
   visible: boolean;

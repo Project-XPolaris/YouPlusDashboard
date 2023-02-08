@@ -1,11 +1,11 @@
-import {PageContainer} from "@ant-design/pro-layout";
 import CreateAccountGroupDialog from "@/components/CreateAccountGroupDialog";
 import {useEffect, useState} from "react";
 import {Button, Card, Popconfirm, Table} from "antd";
 import useAccountGroupsModel from "@/pages/Account/Groups/model";
 import {ColumnsType} from "antd/es/table";
 import styles from "@/pages/Storage/List/index.less";
-import {Link} from "umi";
+import {Link} from "@umijs/max";
+import {PageContainer} from "@ant-design/pro-components";
 
 const AccountGroupsPage = () => {
   const model = useAccountGroupsModel()

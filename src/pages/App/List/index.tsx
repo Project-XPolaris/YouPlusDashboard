@@ -1,11 +1,9 @@
-import {PageContainer} from "@ant-design/pro-layout";
 import {Button, Card} from "antd";
 import {PlusOutlined} from "@ant-design/icons";
-import {history} from "umi";
 import useAppListModel from "@/pages/App/List/model";
 import {useEffect} from "react";
-import type {ProColumns} from "@ant-design/pro-table";
-import ProTable from "@ant-design/pro-table";
+import {PageContainer, ProColumns, ProTable} from "@ant-design/pro-components";
+import {history} from '@umijs/max'
 
 const AppListPage = () => {
   const model = useAppListModel()

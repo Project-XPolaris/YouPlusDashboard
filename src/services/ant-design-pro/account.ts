@@ -1,4 +1,4 @@
-import {request} from "@@/plugin-request/request";
+import {request} from "@umijs/max";
 
 export async function createAccount(username: string, password: string): Promise<API.BaseResponse> {
   return request<API.BaseResponse>('/api/users', {

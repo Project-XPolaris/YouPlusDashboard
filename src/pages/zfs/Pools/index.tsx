@@ -1,4 +1,3 @@
-import {PageContainer} from "@ant-design/pro-layout";
 import {Button, Card, Popconfirm, Table} from "antd";
 import CreateSimpleZFSPoolDialog from "@/components/CreateSmpleZFSPoolDialog";
 import {useEffect, useState} from "react";
@@ -8,7 +7,8 @@ import type {ColumnsType} from "antd/es/table";
 import filesize from "filesize";
 import styles from './index.less'
 import CreatePoolForm from "@/components/CreaetPoolForm";
-import {Link} from "umi";
+import {Link} from "@umijs/max";
+import {PageContainer} from "@ant-design/pro-components";
 const ZFSPoolsPage = () => {
   const model = useZFSPoolsModel()
   const [createZFSPoolDialogVisible, setCreateZFSPoolDialogVisible] = useState(false);

@@ -1,4 +1,4 @@
-import { request } from "umi"
+import {request} from "@umijs/max";
 
 export async function uploadAppInstallerFile(file: File) {
   const data: FormData = new FormData();

@@ -1,5 +1,5 @@
 import { EllipsisOutlined } from '@ant-design/icons';
-import { StatisticCard } from '@ant-design/pro-card';
+import { StatisticCard } from '@ant-design/pro-components';
 export default ({ info }: {info: API.CpuUsage | undefined}) => {
   const getUsage = () => {
     if (!info || info.total === 0) {

@@ -1,10 +1,10 @@
 import type {
-  ProFormInstance} from "@ant-design/pro-form";
+  ProFormInstance} from "@ant-design/pro-components";
 import {
   DrawerForm,
   ProForm,
   ProFormSelect, ProFormSwitch
-} from "@ant-design/pro-form";
+} from "@ant-design/pro-components";
 import {useEffect, useRef} from "react";
 import {Button} from "antd";
 import {PlusOutlined} from "@ant-design/icons";

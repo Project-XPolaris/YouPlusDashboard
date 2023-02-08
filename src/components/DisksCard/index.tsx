@@ -1,4 +1,4 @@
-import ProCard from "@ant-design/pro-card";
+import {ProCard} from "@ant-design/pro-components";
 
 const DisksCard = () => {
   return (

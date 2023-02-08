@@ -1,4 +1,4 @@
-import ProCard from "@ant-design/pro-card";
+import {ProCard} from "@ant-design/pro-components";
 import {Descriptions} from "antd";
 
 const NetworkCard =  ({ info }: { info: API.Network }) => {
