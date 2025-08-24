@@ -1,4 +1,4 @@
-import {createShareFolder, fetchShareFolderList, updateShareFolder, syncShareAndStorage} from "@/services/ant-design-pro/sharefolder";
+import {createShareFolder, fetchShareFolderList, updateShareFolder, syncShareAndStorage, importShareFromSMB} from "@/services/ant-design-pro/sharefolder";
 import {message} from "antd";
 import {useState} from "react";
 
@@ -39,8 +39,24 @@ const useShareFolderListModel = () => {
     }
     await refresh();
   }
+  const importFromSMB = async () => {
+    try {
+      const res = await importShareFromSMB();
+      if (res) {
+        const created = (res as any).createdShares ?? 0;
+        const updated = (res as any).updatedShares ?? 0;
+        message.success(`导入完成：新增 ${created}，更新 ${updated}`);
+        if ((res as any).errors && (res as any).errors.length) {
+          message.warning((res as any).errors.join("\n"));
+        }
+      }
+    } catch (e) {
+      message.error("导入失败");
+    }
+    await refresh();
+  }
   return {
-    create,refresh,shareFolderList,update,sync
+    create,refresh,shareFolderList,update,sync,importFromSMB
   }
 }
 export default useShareFolderListModel

@@ -89,6 +89,10 @@ const ShareFolderListPage = () => {
           key="2"
           onClick={() => model.sync()}
         >Sync</Button>,
+        <Button
+          key="3"
+          onClick={() => model.importFromSMB()}
+        >Import</Button>,
       ]}
     >
       <CreateShareFolderDialog

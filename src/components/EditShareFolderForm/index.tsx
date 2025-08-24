@@ -3,13 +3,14 @@ import type {
 import {
   DrawerForm,
   ProForm,
-  ProFormSelect, ProFormSwitch
+  ProFormSelect, ProFormSwitch, ProFormText
 } from "@ant-design/pro-components";
 import {useEffect, useRef} from "react";
 import {Button} from "antd";
 import {PlusOutlined} from "@ant-design/icons";
 import useAccountList from "@/hooks/user";
 import useUserGroupList from "@/hooks/usergroup";
+import useStorageList from "@/hooks/storage";
 export type EditShareFolderFormValues = {
   enable: boolean;
   public: boolean;
@@ -22,6 +23,8 @@ export type EditShareFolderFormValues = {
   writeGroups: string[];
   validGroups: string[];
   invalidGroups: string[];
+  storageId?: string;
+  newName?: string;
 }
 type EditShareFolderFormProps = {
   shareFolder: API.ShareFolder | null;
@@ -31,10 +34,12 @@ type EditShareFolderFormProps = {
 const EditShareFolderForm = ({shareFolder,onUpdate}: EditShareFolderFormProps) => {
   const accountList = useAccountList()
   const groupList = useUserGroupList()
+  const storageList = useStorageList()
   const formRef = useRef<ProFormInstance>();
   useEffect(() => {
     accountList.refresh()
     groupList.refresh()
+    storageList.refresh()
   },[])
   if (!shareFolder) {
     return (<></>);
@@ -79,6 +84,20 @@ const EditShareFolderForm = ({shareFolder,onUpdate}: EditShareFolderFormProps) =
           width="md"
           label="只读"
           initialValue={shareFolder.readonly}
+        />
+        <ProFormSelect
+          width="md"
+          name="storageId"
+          label="存储"
+          placeholder="选择存储"
+          initialValue={shareFolder.storage.id}
+          options={storageList.storageList.map(s => ({label: s.name, value: s.id}))}
+        />
+        <ProFormText
+          width="md"
+          name="newName"
+          label="新名称"
+          placeholder="留空则不改名"
         />
       </ProForm.Group>
       <ProForm.Group>

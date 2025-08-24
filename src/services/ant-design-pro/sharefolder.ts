@@ -26,6 +26,8 @@ export async function updateShareFolder(name: string,option: {
   writeGroups?: string[];
   validGroups?: string[];
   invalidGroups?: string[];
+  storageId?: string;
+  newName?: string;
 }) {
 
   return request<API.BaseResponse>('/api/share/update', {
@@ -49,6 +51,16 @@ export async function syncShareAndStorage() {
   })
 }
 
+export async function importShareFromSMB() {
+  return request<API.BaseResponse & {
+    createdShares: number;
+    updatedShares: number;
+    errors?: string[];
+  }>("/api/share/import", {
+    method: 'POST'
+  })
+}
+
 export async function fetchSMBSections() {
   return request<{sections: {name: string, fields: Record<string,string>, isShareFolder: boolean, shareFolderId?: number}[]}>("/api/smb/sections", {
     method: 'GET'
@@ -61,8 +73,27 @@ export async function fetchSMBRaw() {
   })
 }
 
+export async function updateSMBRaw(raw: string) {
+  return request<API.BaseResponse>("/api/smb/raw", {
+    method: 'POST',
+    data: { raw }
+  })
+}
+
 export async function fetchSMBStatus() {
   return request<API.FetchSMBStatusResult>("/api/smb/status", {
+    method: 'GET'
+  })
+}
+
+export async function restartSMB() {
+  return request<API.BaseResponse>("/api/smb/restart", {
+    method: 'POST'
+  })
+}
+
+export async function fetchSMBInfo() {
+  return request<{success: boolean; name: string; status: string}>("/api/smb/info", {
     method: 'GET'
   })
 }
