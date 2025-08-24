@@ -21,6 +21,16 @@ export async function fetchDiskInfo(device: string) {
   });
 }
 
+export async function fetchDiskSmart(name: string) {
+  return request<any>('/api/disk/smart', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    params: { name },
+  });
+}
+
 export async function appendPartition(device: string,size: string) {
   return request<API.BaseResponse>('/api/disks/addpartition', {
     method: 'POST',

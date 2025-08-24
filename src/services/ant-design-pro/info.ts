@@ -33,3 +33,22 @@ export async function fetchTaskList() {
     method: 'GET'
   })
 }
+
+export async function fetchSystemSensors() {
+  return request<API.FetchSensorsResult>('/api/system/sensors', {
+    method: 'GET'
+  })
+}
+
+export async function fetchSystemLoad() {
+  return request<API.FetchLoadResult>('/api/system/load', { method: 'GET' })
+}
+export async function fetchSystemUptime() {
+  return request<API.FetchUptimeResult>('/api/system/uptime', { method: 'GET' })
+}
+export async function fetchFilesystems() {
+  return request<API.FetchFilesystemsResult>('/api/system/filesystems', { method: 'GET' })
+}
+export async function fetchNetIO() {
+  return request<API.FetchNetIOResult>('/api/system/netio', { method: 'GET' })
+}

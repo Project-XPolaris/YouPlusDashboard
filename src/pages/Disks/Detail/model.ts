@@ -1,9 +1,10 @@
 import {useState} from "react";
 import {message} from "antd";
-import {appendPartition, fetchDiskInfo, removePartition} from "@/services/ant-design-pro/disk";
+import {appendPartition, fetchDiskInfo, fetchDiskSmart, removePartition} from "@/services/ant-design-pro/disk";
 
 const useDiskDetailModel = () => {
   const [disk, setDisk] = useState<API.Disk>();
+  const [smart, setSmart] = useState<any>();
   const loadDisk = async (name: string) => {
     try {
       const response = await fetchDiskInfo(name);
@@ -14,6 +15,12 @@ const useDiskDetailModel = () => {
       }
     } catch (e) {
       message.error("获取磁盘信息失败");
+    }
+    try {
+      const smartRes = await fetchDiskSmart(name);
+      setSmart(smartRes);
+    } catch (e) {
+      // ignore
     }
   };
   const appendDiskPartition = async (size: string) => {
@@ -42,6 +49,7 @@ const useDiskDetailModel = () => {
   }
   return {
     disk,
+    smart,
     loadDisk,
     appendDiskPartition,
     removeDiskPartition

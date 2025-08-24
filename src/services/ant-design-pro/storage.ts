@@ -27,3 +27,7 @@ export async function updateStorage(id: string, options: { name?: string }) {
     data:options
   })
 }
+
+export async function fetchStorageDetail(id: string) {
+  return request<API.GetStorageDetailResult>(`/api/storage/${id}`);
+}

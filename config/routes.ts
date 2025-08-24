@@ -18,7 +18,7 @@ export default [
       {
         name: 'login',
         path: '/user/login',
-        component: './User/Login',
+        component: './user/Login',
       },
       {
         component: './404',
@@ -103,6 +103,12 @@ export default [
         icon: 'ClusterOutlined',
       },
       {
+        path: '/zfs/monitor',
+        name: 'ZFS monitor',
+        component: './zfs/Monitor',
+        icon: 'ClusterOutlined',
+      },
+      {
         path: '/zfs/pool/:name',
         name: 'Pool details',
         hideInMenu: true,
@@ -125,6 +131,12 @@ export default [
         component: './Storage/List',
       },
       {
+        path: '/storage/:id',
+        name: 'Storage Detail',
+        hideInMenu: true,
+        component: './Storage/Detail',
+      },
+      {
         component: './404',
       },
     ],
@@ -145,6 +157,73 @@ export default [
         name: 'Detail',
         hideInMenu: true,
         component: './ShareFolder/Detail',
+      },
+      {
+        component: './404',
+      },
+    ],
+  },
+  {
+    path: '/smb',
+    name: 'SMB',
+    icon: 'FolderOutlined',
+    access: 'canAdmin',
+    routes: [
+      {
+        path: '/smb/list',
+        name: 'List',
+        component: './SMB/List',
+      },
+      {
+        path: '/smb/status',
+        name: 'Status',
+        component: './SMB/Status',
+      },
+      {
+        path: '/smb/raw',
+        name: 'Raw',
+        component: './SMB/Raw',
+      },
+      {
+        component: './404',
+      },
+    ],
+  },
+  {
+    path: '/system',
+    name: 'System',
+    icon: 'DashboardOutlined',
+    access: 'canAdmin',
+    routes: [
+      {
+        path: '/system/process',
+        name: 'Process',
+        component: './System/Process',
+      },
+      {
+        path: '/system/overview',
+        name: 'Overview',
+        component: './System/Overview',
+      },
+      {
+        path: '/system/services',
+        name: 'Services',
+        component: './System/Services',
+      },
+      {
+        path: '/system/users',
+        name: 'Users',
+        component: './System/Users',
+      },
+      {
+        path: '/system/hardware',
+        name: 'Hardware',
+        component: './System/Hardware',
+      },
+      {
+        path: '/system/sensors',
+        name: 'Sensors',
+        component: './System/Sensors',
       },
       {
         component: './404',

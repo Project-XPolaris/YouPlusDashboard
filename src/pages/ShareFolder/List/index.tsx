@@ -85,6 +85,10 @@ const ShareFolderListPage = () => {
           key="1"
           onClick={() => setCreateShareFolderDialogVisible(true)}
         >Create</Button>,
+        <Button
+          key="2"
+          onClick={() => model.sync()}
+        >Sync</Button>,
       ]}
     >
       <CreateShareFolderDialog

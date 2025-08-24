@@ -36,3 +36,33 @@ export async function updateShareFolder(name: string,option: {
     }
   })
 }
+
+export async function syncShareAndStorage() {
+  return request<API.BaseResponse & {
+    createdStorages: number;
+    updatedStorages: number;
+    createdShares: number;
+    updatedShares: number;
+    errors?: string[];
+  }>("/api/share/sync", {
+    method: 'POST'
+  })
+}
+
+export async function fetchSMBSections() {
+  return request<{sections: {name: string, fields: Record<string,string>, isShareFolder: boolean, shareFolderId?: number}[]}>("/api/smb/sections", {
+    method: 'GET'
+  })
+}
+
+export async function fetchSMBRaw() {
+  return request<{raw: string}>("/api/smb/raw", {
+    method: 'GET'
+  })
+}
+
+export async function fetchSMBStatus() {
+  return request<API.FetchSMBStatusResult>("/api/smb/status", {
+    method: 'GET'
+  })
+}

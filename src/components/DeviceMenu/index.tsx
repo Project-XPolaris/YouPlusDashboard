@@ -71,7 +71,7 @@ const DeviceMenu: React.FC<GlobalHeaderRightProps> = ({}) => {
     }
   ]
   return (
-    <HeaderDropdown menu={{items:menu}}>
+    <HeaderDropdown placement="bottomRight" menu={{items:menu}}>
       <span
         className={actionClassName}
       >

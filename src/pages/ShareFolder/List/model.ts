@@ -1,4 +1,4 @@
-import {createShareFolder, fetchShareFolderList, updateShareFolder} from "@/services/ant-design-pro/sharefolder";
+import {createShareFolder, fetchShareFolderList, updateShareFolder, syncShareAndStorage} from "@/services/ant-design-pro/sharefolder";
 import {message} from "antd";
 import {useState} from "react";
 
@@ -28,8 +28,19 @@ const useShareFolderListModel = () => {
     }
     await refresh()
   }
+  const sync = async () => {
+    try {
+      const res = await syncShareAndStorage();
+      if (res) {
+        message.success("同步完成");
+      }
+    } catch (e) {
+      message.error("同步失败");
+    }
+    await refresh();
+  }
   return {
-    create,refresh,shareFolderList,update
+    create,refresh,shareFolderList,update,sync
   }
 }
 export default useShareFolderListModel

@@ -42,3 +42,24 @@ export async function getNotices(options?: { [key: string]: any }) {
     ...(options || {}),
   });
 }
+
+export async function getSystemMonitor() {
+  return request<API.SystemMonitorResult>('/api/system/monitor');
+}
+
+export async function fetchSystemServices(names: string[]) {
+  const qs = encodeURIComponent(names.join(','));
+  return request<API.FetchSystemServicesResult>(`/api/system/services?names=${qs}`);
+}
+
+export async function fetchSystemUsers() {
+  return request<API.FetchSystemUsersResult>('/api/system/users');
+}
+
+export async function enableSystemUser(username: string) {
+  return request<API.BaseResponse>('/api/system/users/enable', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    data: { username },
+  });
+}

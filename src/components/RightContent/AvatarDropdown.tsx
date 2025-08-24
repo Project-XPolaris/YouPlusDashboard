@@ -153,6 +153,7 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
 
   return (
     <HeaderDropdown
+      placement="bottomRight"
       menu={{
         selectedKeys: [],
         onClick: onMenuClick,

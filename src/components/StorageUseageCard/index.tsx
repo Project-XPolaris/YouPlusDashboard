@@ -1,7 +1,7 @@
 import {StatisticCard} from "@ant-design/pro-components";
 import {Space} from "antd";
 import {EllipsisOutlined} from "@ant-design/icons";
-import {Progress} from '@ant-design/plots';
+import { Tiny } from '@ant-design/plots';
 import filesize from "filesize";
 
 export default ({info}: { info: API.Storage | undefined }) => {
@@ -29,7 +29,7 @@ export default ({info}: { info: API.Storage | undefined }) => {
       }}
       chart={
         <>
-          <Progress percent={getUsage()} autoFit width={120} height={32} />
+          <Tiny.Progress percent={getUsage()} autoFit width={120} height={32} />
         </>
       }
     />

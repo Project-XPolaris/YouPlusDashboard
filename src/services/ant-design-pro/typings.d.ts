@@ -82,8 +82,15 @@ declare namespace API {
     }
   }
 
+  type StorageDetail = Storage & {
+    shares: { name: string; path: string }[];
+  }
+
   type GetStorageResult = BaseResponse & {
     storages: Storage[];
+  }
+  type GetStorageDetailResult = BaseResponse & {
+    data: StorageDetail;
   }
   type GetAccountListResult = BaseResponse & {
     users: string[]
@@ -158,6 +165,36 @@ declare namespace API {
       cpu: CpuUsage;
       memory: MemoryUsage;
     }
+  }
+  type Sensor = {
+    sensorKey: string;
+    temperature: number;
+    high: number;
+    critical: number;
+  }
+  type FetchSensorsResult = BaseResponse & {
+    sensors: Sensor[];
+  }
+  type FetchLoadResult = BaseResponse & { load1: number; load5: number; load15: number }
+  type FetchUptimeResult = BaseResponse & { uptimeSec: number }
+  type Filesystem = { device: string; mount: string; fstype: string; total: number; used: number; free: number; usedPercent: number }
+  type FetchFilesystemsResult = BaseResponse & { filesystems: Filesystem[] }
+  type NetIO = { name: string; bytesSent: number; bytesRecv: number; packetsSent: number; packetsRecv: number; errsIn: number; errsOut: number }
+  type FetchNetIOResult = BaseResponse & { netio: NetIO[] }
+  type SystemService = {
+    name: string;
+    status: string;
+  }
+  type FetchSystemServicesResult = BaseResponse & {
+    services: SystemService[]
+  }
+  type SystemUser = {
+    username: string;
+    uid: string;
+    isYouPlusUser: boolean;
+  }
+  type FetchSystemUsersResult = BaseResponse & {
+    users: SystemUser[]
   }
   type GetPoolInfoResult = BaseResponse & {
     data: ZPool
@@ -297,6 +334,22 @@ declare namespace API {
   }
   type FetchDiskInfoResult = BaseResponse & {
     disk: DiskInfo
+  }
+  type SMBProcess = {
+    pid: string;
+    username: string;
+    group: string;
+    machine: string;
+  }
+  type SMBSharesStatus = {
+    service: string;
+    pid: string;
+    machine: string;
+    connectAt: string;
+  }
+  type FetchSMBStatusResult = BaseResponse & {
+    process: SMBProcess[];
+    shares: SMBSharesStatus[];
   }
   type PageParams = {
     current?: number;

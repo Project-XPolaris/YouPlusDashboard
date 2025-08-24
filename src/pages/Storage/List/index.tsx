@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 import styles from "./index.less";
 import UpdateStorageForm from "@/components/UpdateStorageForm";
 import {PageContainer, ProColumns, ProTable} from "@ant-design/pro-components";
+import {history} from '@umijs/max'
 
 const StorageListPage = () => {
   const model = useStorageList()
@@ -15,6 +16,7 @@ const StorageListPage = () => {
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
+      render: (value, record) => <a onClick={() => history.push(`/storage/${record.id}`)}>{record.name}</a>
     },
     {
       title: 'Type',
